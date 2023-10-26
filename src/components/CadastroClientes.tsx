@@ -93,7 +93,7 @@ const Cadastro = () => {
     return (
         <div>
             <Header />
-            <main className={styles.main}>
+            <main>
                 <div className='container'>
                     <div className='card'>
                         <div className='card-body'>
