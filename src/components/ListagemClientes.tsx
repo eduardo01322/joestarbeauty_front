@@ -25,7 +25,7 @@ const ListagemDeClientes = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente/{nome}',
+                const response = await axios.post('http://127.0.0.1:8000/api/nomeS',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -51,7 +51,7 @@ const ListagemDeClientes = () => {
         async function fetchData() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarC');
-                if(true === response.data.status){
+                if(true == response.data.status){
                     setClientes(response.data.data)
                 }
             } catch (error) {
