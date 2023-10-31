@@ -6,7 +6,7 @@ import CadastroProfissionais from "../components/CadastrodeProfissionais";
 import CadastroServicos from "../components/CadastroServicos";
 import ListagemClientes from "../components/ListagemClientes";
 import ListagemProfissional from "../components/ListagemProfissionais";
-import ListagemServico from "../components/ListagemServicos";
+import ListagemDeServico from "../components/ListagemServicos";
 
 const AppRoute = () => {
     return (
@@ -17,7 +17,7 @@ const AppRoute = () => {
                 <Route path="CadastroDeServicos" element={<CadastroServicos/>} />
                 <Route path="ListagemDeClientes" element={<ListagemClientes/>} />
                 <Route path="ListagemDeProfissional" element={<ListagemProfissional/>} />
-                <Route path="ListagemServicos" element={<ListagemServico/>} />
+                <Route path="ListagemDeServico" element={<ListagemDeServico/>} />
             </Routes>
         </BrowserRouter>
     );

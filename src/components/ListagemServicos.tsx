@@ -1,13 +1,12 @@
-import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-
-import styles from "../App.module.css";
+import axios from 'axios';
+import styles from '../template.module.css'
 import { CadastroServicosInterface } from '../Interfaces/CadastroServicos';
 
 
-const ListagemServico = () => {
+const ListagemDeServico = () => {
 
-    const [clientes, setClientes] = useState<CadastroServicosInterface[]>([]);
+    const [servicos, setServicos] = useState<CadastroServicosInterface[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
@@ -33,9 +32,7 @@ const ListagemServico = () => {
                     }
                 ).then(function (response) {
                     if(true == response.data.status){
-                        setClientes(response.data.data)
-                    } else {
-                        setClientes([]);
+                        setServicos(response.data.data)
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -52,7 +49,7 @@ const ListagemServico = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarS');
                 if(true == response.data.status){
-                    setClientes(response.data.data)
+                    setServicos(response.data.data)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -108,13 +105,17 @@ const ListagemServico = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {clientes.map(cliente => (
-                                        <tr key={cliente.id}>
-                                            <td>{cliente.id}</td>
-                                            <td>{cliente.nome}</td>
-                                            <td>{cliente.preco}</td>
-                                            <td>{cliente.descricao}</td>
-                                            <td>{cliente.duraçãoDoServiço}</td>
+                                    {servicos.map(servicos => (
+                                        <tr key={servicos.id}>
+                                            <td>{servicos.id}</td>
+                                            <td>{servicos.nome}</td>
+                                            <td>{servicos.preco}</td>
+                                            <td>{servicos.descricao}</td>
+                                            <td>{servicos.duracao}</td>
+                                           
+                                          
+                                            
+                                            
                                             <td>
                                                 <a href="#" className='btn btn-primary btn-sm'>Editar</a>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
@@ -131,4 +132,4 @@ const ListagemServico = () => {
         </div>
     );
 }
-export default ListagemServico;
+export default ListagemDeServico;

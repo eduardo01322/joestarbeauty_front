@@ -1,13 +1,14 @@
-import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
-
-import styles from "../App.module.css";
+import axios from 'axios';
+import Header from './Header';
+import styles from '../template.module.css'
+import Footer from './Footer';
 import { CadastroProfissionaisInterface } from '../Interfaces/CadastroProfissionalInterface';
 
 
 const ListagemProfissional = () => {
 
-    const [clientes, setClientes] = useState<CadastroProfissionaisInterface[]>([]);
+    const [Profissional, setProfissional] = useState<CadastroProfissionaisInterface[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
@@ -23,7 +24,7 @@ const ListagemProfissional = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nomeP',
+                const response = await axios.post('http://127.0.0.1:8000/api/Profissional/nome',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -33,9 +34,7 @@ const ListagemProfissional = () => {
                     }
                 ).then(function (response) {
                     if(true == response.data.status){
-                        setClientes(response.data.data)
-                    } else {
-                        setClientes([]);
+                        setProfissional(response.data.data)
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -50,9 +49,9 @@ const ListagemProfissional = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/vizualizarP');
+                const response = await axios.get('http://127.0.0.1:8000/api/Profissional/visualizar');
                 if(true == response.data.status){
-                    setClientes(response.data.data)
+                    setProfissional(response.data.data)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -91,7 +90,7 @@ const ListagemProfissional = () => {
                     </div>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'> Listagem de Proficional</h5>
+                            <h5 className='card-title'> Listagem de Profissional</h5>
                             <table className='table table-hover'>
                                 <thead>
                                     <tr>
@@ -99,20 +98,31 @@ const ListagemProfissional = () => {
                                         <th>Nome</th>
                                         <th>CPF</th>
                                         <th>E-mail</th>
-                                        <th>celular</th>
+                                        <th>Data de Nascimento</th>
+                                    
+                                        <th>cep</th>
+                                        <th>complemento</th>
                                         <th>salario</th>
+                                        
+                                        
+                                        
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {clientes.map(cliente => (
-                                        <tr key={cliente.id}>
-                                            <td>{cliente.id}</td>
-                                            <td>{cliente.nome}</td>
-                                            <td>{cliente.email}</td>
-                                            <td>{cliente.cpf}</td>
-                                            <td>{cliente.celular}</td>
-                                            <td>{cliente.salario}</td>
+                                    {Profissional.map(Profissional => (
+                                        <tr key={Profissional.id}>
+                                            <td>{Profissional.id}</td>
+                                            <td>{Profissional.nome}</td>
+                                            <td>{Profissional.email}</td>
+                                            <td>{Profissional.cpf}</td>
+                                            <td>{Profissional.dataDeNascimento}</td>
+                                            
+                                            <td>{Profissional.cep}</td>
+                                            <td>{Profissional.complemento}</td>
+                                            <td>{Profissional.salario}</td>
+                                            
+                                            
                                             <td>
                                                 <a href="#" className='btn btn-primary btn-sm'>Editar</a>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>

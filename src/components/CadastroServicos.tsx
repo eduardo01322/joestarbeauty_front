@@ -4,7 +4,7 @@ import Header from './Header';
 import styles from '../template.module.css'
 import Footer from './Footer'
 
-const CadastroServico = () => {
+const CadastroServicos = () => {
     const [nome, setNome] = useState<string>("");
     const [preco, setpreco] = useState<string>("");
     const [descricao, setdescricao] = useState<string>("");
@@ -22,7 +22,7 @@ const CadastroServico = () => {
 
         console.log(dados);
         axios
-            .post("http://127.0.0.1:8000/api/servicos", dados, {
+            .post("http://127.0.0.1:8000/api/nomeS", dados, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
@@ -123,4 +123,4 @@ const CadastroServico = () => {
     );
 };
 
-export default CadastroServico;
+export default CadastroServicos;
