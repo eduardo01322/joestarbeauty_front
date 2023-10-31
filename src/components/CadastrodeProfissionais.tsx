@@ -4,7 +4,7 @@ import Header from './Header';
 import style from '../template.module.css'
 import Footer from './Footer';
 
-const Cadastro = () => {
+const CadastroProfissionais = () => {
 
     const [nome, setNome] = useState<string>("");
     const [celular, setCelular] = useState<string>("");
@@ -19,7 +19,7 @@ const Cadastro = () => {
     const [bairro, setBairro] = useState<string>("");
     const [cep, setCep] = useState<string>("");
     const [complemento, setComplemento] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
     const [salario, setSalario]= useState<string>("");
     const[erro, setErro]=useState<string>("")
 
@@ -47,12 +47,12 @@ const Cadastro = () => {
 
     }
 
-    const cadastrarUsuario = (e: FormEvent) => {
+    const cadastrarProfissionais = (e: FormEvent) => {
         e.preventDefault();
         const dados = {
             nome: nome,
-            email: email,
             celular:celular,
+            email: email,
             cpf: cpf,
             dataDeNascimento: dataDeNascimento,
             cidade: cidade,
@@ -63,12 +63,12 @@ const Cadastro = () => {
             bairro: bairro,
             cep: cep,
             complemento: complemento,
-            password: password,
+            senha: senha,
             salario:salario
         }
 
         console.log(dados)
-        axios.post('http://127.0.0.1:8000/api/Profissional', dados, {
+        axios.post('http://127.0.0.1:8000/api/profissional', dados, {
             headers:
                 { "Accept": "application/json", "Content-Type": "application/json" }
         }).then(function (response) {
@@ -88,8 +88,8 @@ const Cadastro = () => {
         if (e.target.name === "cpf") {
             setCpf(e.target.value);
         }
-        if (e.target.name === "password") {
-            setPassword(e.target.value);
+        if (e.target.name === "senha") {
+            setSenha(e.target.value);
         }
         if (e.target.name==="celular"){
             setCelular(e.target.value);
@@ -134,7 +134,7 @@ const Cadastro = () => {
                     <div className='card'>
                         <div className='card-body'>
                             <h5 className='card-title'>Cadastro de Profissionais</h5>
-                            <form onSubmit={cadastrarUsuario} className='row g-3'>
+                            <form onSubmit={cadastrarProfissionais} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Nome</label>
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} />{nome}
@@ -153,7 +153,7 @@ const Cadastro = () => {
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="dataDeNascimento" className='form-label'>Data de nascimento</label>
-                                    <input type="text" name='dataDeNascimento' className='form-control' required onChange={handleState} />
+                                    <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cidade" className='form-label'>Cidade</label>
@@ -189,11 +189,11 @@ const Cadastro = () => {
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="salario" className='form-label'>salario</label>
-                                    <input type="text" name='salario' className='form-control' required onChange={handleState} />
+                                    <input type="decimal" name='salario' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
-                                    <label htmlFor="password" className='form-label'>Senha</label>
-                                    <input type="text" name='password' className='form-control' required onChange={handleState} />
+                                    <label htmlFor="senha" className='form-label'>Senha</label>
+                                    <input type="text" name='senha' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-dark btn-sm'>Cadastrar</button>
@@ -208,4 +208,4 @@ const Cadastro = () => {
     );
 }
 
-export default Cadastro;
+export default CadastroProfissionais;

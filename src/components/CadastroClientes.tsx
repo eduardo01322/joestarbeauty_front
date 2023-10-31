@@ -19,7 +19,7 @@ const Cadastro = () => {
     const [bairro, setBairro] = useState<string>("");
     const [cep, setCep] = useState<string>("");
     const [complemento, setComplemento] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
     const[erro, setErro]=useState<string>("")
 
 
@@ -62,7 +62,7 @@ const Cadastro = () => {
             bairro: bairro,
             cep: cep,
             complemento: complemento,
-            password: password
+            senha: senha
         }
 
         console.log(dados)
@@ -86,13 +86,13 @@ const Cadastro = () => {
         if (e.target.name === "cpf") {
             setCpf(e.target.value);
         }
-        if (e.target.name === "password") {
-            setPassword(e.target.value);
+        if (e.target.name === "senha") {
+            setSenha(e.target.value);
         }
         if (e.target.name==="celular"){
             setCelular(e.target.value);
         }
-        if (e.target.name==="dataDeNascimento"){
+        if (e.target.name==="dataNascimento"){
             setDataNascimento(e.target.value);
         }
         if (e.target.name=="cidade"){
@@ -147,8 +147,8 @@ const Cadastro = () => {
                                     <input type="text" name='cpf' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
-                                    <label htmlFor="dataDeNascimento" className='form-label'>Data de nascimento</label>
-                                    <input type="text" name='dataDeNascimento' className='form-control' required onChange={handleState} />
+                                    <label htmlFor="dataNascimento" className='form-label'>Data de nascimento</label>
+                                    <input type="date" name='dataNascimento' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cidade" className='form-label'>Cidade</label>
@@ -183,8 +183,8 @@ const Cadastro = () => {
                                     <input type="text" name='complemento' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
-                                    <label htmlFor="password" className='form-label'>Senha</label>
-                                    <input type="text" name='password' className='form-control' required onChange={handleState} />
+                                    <label htmlFor="senha" className='form-label'>Senha</label>
+                                    <input type="text" name='senha' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-dark btn-sm'>Cadastrar</button>

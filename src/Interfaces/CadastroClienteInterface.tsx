@@ -4,7 +4,7 @@ id:number;
     celular:string;
     email:string;
     cpf:string;
-    dataNascimento:string;
+    dataDeNascimento:string;
     cidade:string;
     estado:string;
     pais:string;
