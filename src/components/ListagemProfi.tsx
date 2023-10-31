@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
 import styles from "../App.module.css";
-import { CadastroInterface } from '../Interfaces/CadastroClienteInterface';
+import { CadastroInterfaceProficional } from '../Interfaces/CadastroProfissionalInterface';
 
 
-const Listagem = () => {
+const ListagemProficional = () => {
 
-    const [clientes, setClientes] = useState<CadastroInterface[]>([]);
+    const [clientes, setClientes] = useState<CadastroInterfaceProficional[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
@@ -23,7 +23,7 @@ const Listagem = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/cliente/{nome}',
+                const response = await axios.post('http://127.0.0.1:8000/api/buscarProficional/{nome}',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -48,7 +48,7 @@ const Listagem = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarCadastrosCliente');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizarCadastrosProficional');
                 if(true == response.data.status){
                     setClientes(response.data.data)
                 }
@@ -89,7 +89,7 @@ const Listagem = () => {
                     </div>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'> Listagem de Clientes</h5>
+                            <h5 className='card-title'> Listagem de Proficional</h5>
                             <table className='table table-hover'>
                                 <thead>
                                     <tr>
@@ -107,6 +107,7 @@ const Listagem = () => {
                                         <th>bairro</th>
                                         <th>cep</th>
                                         <th>Complemento</th>
+                                        <th>salario</th>
                                         
                                         
                                         
@@ -120,7 +121,7 @@ const Listagem = () => {
                                             <td>{cliente.nome}</td>
                                             <td>{cliente.email}</td>
                                             <td>{cliente.cpf}</td>
-                                            <td>{cliente.dataNascimento}</td>
+                                            <td>{cliente.dataDeNascimento}</td>
                                             <td>{cliente.cidade}</td>
                                             <td>{cliente.estado}</td>
                                             <td>{cliente.celular}</td>
@@ -130,6 +131,7 @@ const Listagem = () => {
                                             <td>{cliente.bairro}</td>
                                             <td>{cliente.cep}</td>
                                             <td>{cliente.complemento}</td>
+                                            <td>{cliente.salario}</td>
                                             
                                             
                                             <td>
@@ -148,4 +150,4 @@ const Listagem = () => {
         </div>
     );
 }
-export default Listagem;
+export default ListagemProficional;

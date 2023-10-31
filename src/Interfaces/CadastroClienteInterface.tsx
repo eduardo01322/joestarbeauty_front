@@ -1,17 +1,17 @@
-export interface CadastroClienteInterface{
-    id:number;
+export interface CadastroInterface{
+id:number;
     nome:string;
-    celular:number;
+    celular:string;
     email:string;
     cpf:string;
-    dataDeNascimento:Date;
+    dataNascimento:string;
     cidade:string;
     estado:string;
     pais:string;
     rua:string;
-    numero:number;
+    numero:string;
     bairro:string;
     cep:string;
     complemento:string;
-    passaword:string;
+    password:string;
 }
