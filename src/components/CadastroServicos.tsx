@@ -6,9 +6,9 @@ import Footer from './Footer'
 
 const CadastroServicos = () => {
     const [nome, setNome] = useState<string>("");
-    const [preco, setpreco] = useState<string>("");
-    const [descricao, setdescricao] = useState<string>("");
-    const [duracao, setduracao] = useState<string>("");
+    const [preco, setPreco] = useState<string>("");
+    const [descricao, setDescricao] = useState<string>("");
+    const [duracao, setDuracao] = useState<string>("");
     const [erro, setErro] = useState<string>("");
 
     const cadastrarServico = (e: FormEvent) => {
@@ -40,13 +40,13 @@ const CadastroServicos = () => {
             setNome(e.target.value);
         }
         if (e.target.name === "preco") {
-            setpreco(e.target.value);
+            setPreco(e.target.value);
         }
         if (e.target.name === "descricao") {
-            setdescricao(e.target.value);
+            setDescricao(e.target.value);
         }
         if (e.target.name === "duracao") {
-            setduracao(e.target.value);
+            setDuracao(e.target.value);
         }
     };
 
