@@ -72,7 +72,7 @@ const CadastroProfissionais = () => {
             headers:
                 { "Accept": "application/json", "Content-Type": "application/json" }
         }).then(function (response) {
-            window.location.href = "/listagem"
+            window.location.href = "/ListagemDeProfissional"
         }).catch(function (error) {
             console.log(error);
         });

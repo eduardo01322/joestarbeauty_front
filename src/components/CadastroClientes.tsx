@@ -50,8 +50,8 @@ const Cadastro = () => {
         e.preventDefault();
         const dados = {
             nome: nome,
-            email: email,
             celular:celular,
+            email: email,
             cpf: cpf,
             dataNascimento: dataNascimento,
             cidade: cidade,
@@ -70,7 +70,7 @@ const Cadastro = () => {
             headers:
                 { "Accept": "application/json", "Content-Type": "application/json" }
         }).then(function (response) {
-            window.location.href = "/listagem"
+            window.location.href = "/ListagemDeClientes"
         }).catch(function (error) {
             console.log(error);
         });
@@ -80,6 +80,9 @@ const Cadastro = () => {
         if (e.target.name === "nome") {
             setNome(e.target.value);
         }
+        if (e.target.name==="celular"){
+            setCelular(e.target.value);
+        }
         if (e.target.name === "email") {
             setEmail(e.target.value);
         }
@@ -88,9 +91,6 @@ const Cadastro = () => {
         }
         if (e.target.name === "senha") {
             setSenha(e.target.value);
-        }
-        if (e.target.name==="celular"){
-            setCelular(e.target.value);
         }
         if (e.target.name==="dataNascimento"){
             setDataNascimento(e.target.value);
@@ -135,12 +135,12 @@ const Cadastro = () => {
                                     <input type="text" name='nome' className='form-control' required onChange={handleState} />{nome}
                                 </div>
                                 <div className='col-6'>
-                                    <label htmlFor="email" className='form-label'>E-mail</label>
-                                    <input type="text" name='email' className='form-control' required onChange={handleState} />
-                                </div>
-                                <div className='col-6'>
                                     <label htmlFor="celular" className='form-label'>Celular</label>
                                     <input type="text" name='celular' className='form-control' required onChange={handleState} />
+                                </div>
+                                <div className='col-6'>
+                                    <label htmlFor="email" className='form-label'>E-mail</label>
+                                    <input type="text" name='email' className='form-control' required onChange={handleState} />
                                 </div>
                                 <div className='col-6'>
                                     <label htmlFor="cpf" className='form-label'>CPF</label>

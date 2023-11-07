@@ -21,15 +21,14 @@ const CadastroServicos = () => {
         };
 
         console.log(dados);
-        axios
-            .post("http://127.0.0.1:8000/api/nomeS", dados, {
+        axios.post("http://127.0.0.1:8000/api/servicos", dados, {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 },
             })
             .then(function (response) {
-                window.location.href = "/ListagemServico";
+                window.location.href = "/ListagemDeServico";
             })
             .catch(function (error) {
                 console.log(error);

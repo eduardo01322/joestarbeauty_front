@@ -7,6 +7,9 @@ import CadastroServicos from "../components/CadastroServicos";
 import ListagemClientes from "../components/ListagemClientes";
 import ListagemProfissional from "../components/ListagemProfissionais";
 import ListagemDeServico from "../components/ListagemServicos";
+import EditarCliente from "../components/EditarClientes";
+import EditarProfissional from "../components/EditarProfissionais";
+import EditarServicos from "../components/EditarServicos";
 
 const AppRoute = () => {
     return (
@@ -18,6 +21,9 @@ const AppRoute = () => {
                 <Route path="ListagemDeClientes" element={<ListagemClientes/>} />
                 <Route path="ListagemDeProfissional" element={<ListagemProfissional/>} />
                 <Route path="ListagemDeServico" element={<ListagemDeServico/>} />
+                <Route path="/EditarCliente/:id" element={<EditarCliente/>} />
+                <Route path="/EditarProfissional/:id" element={<EditarProfissional/>} />
+                <Route path="/EditarServicos/:id" element={<EditarServicos/>} />
             </Routes>
         </BrowserRouter>
     );

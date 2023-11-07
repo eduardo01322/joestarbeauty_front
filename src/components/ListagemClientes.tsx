@@ -1,9 +1,8 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
-import Header from './Header';
 import styles from '../template.module.css'
-import Footer from './Footer';
 import { CadastroInterface } from '../Interfaces/CadastroClienteInterface';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,7 +24,7 @@ const ListagemDeClientes = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nomeS',
+                const response = await axios.post('http://127.0.0.1:8000/api/nomeC',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -51,7 +50,8 @@ const ListagemDeClientes = () => {
         async function fetchData() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarC');
-                if(true == response.data.status){
+          
+                if(true === response.data.status){
                     setClientes(response.data.data)
                 }
             } catch (error) {
@@ -99,13 +99,8 @@ const ListagemDeClientes = () => {
                                         <th>Nome</th>
                                         <th>E-mail</th>
                                         <th>CPF</th>
-                                        <th>Data de Nascimento</th>
-        
                                         <th>cep</th>
                                         <th>Complemento</th>
-                                        
-                                        
-                                        
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
@@ -116,14 +111,12 @@ const ListagemDeClientes = () => {
                                             <td>{cliente.nome}</td>
                                             <td>{cliente.email}</td>
                                             <td>{cliente.cpf}</td>
-                                            <td>{cliente.dataDeNascimento}</td>
-                                    
                                             <td>{cliente.cep}</td>
                                             <td>{cliente.complemento}</td>
                                             
                                             
                                             <td>
-                                                <a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                            <Link to={"/EditarCliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>

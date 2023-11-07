@@ -1,9 +1,8 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
-import Header from './Header';
-import styles from '../template.module.css'
-import Footer from './Footer';
+import styles from '../template.module.css';
 import { CadastroProfissionaisInterface } from '../Interfaces/CadastroProfissionalInterface';
+import { Link } from 'react-router-dom';
 
 
 const ListagemProfissional = () => {
@@ -50,7 +49,7 @@ const ListagemProfissional = () => {
         async function fetchData() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizarP');
-                if(true == response.data.status){
+                if(true === response.data.status){
                     setProfissional(response.data.data)
                 }
             } catch (error) {
@@ -96,10 +95,8 @@ const ListagemProfissional = () => {
                                     <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
-                                        <th>CPF</th>
                                         <th>E-mail</th>
-                                        <th>Data de Nascimento</th>
-                                    
+                                        <th>CPF</th>
                                         <th>cep</th>
                                         <th>complemento</th>
                                         <th>salario</th>
@@ -116,15 +113,13 @@ const ListagemProfissional = () => {
                                             <td>{Profissional.nome}</td>
                                             <td>{Profissional.email}</td>
                                             <td>{Profissional.cpf}</td>
-                                            <td>{Profissional.dataDeNascimento}</td>
-                                            
                                             <td>{Profissional.cep}</td>
                                             <td>{Profissional.complemento}</td>
                                             <td>{Profissional.salario}</td>
                                             
                                             
                                             <td>
-                                                <a href="#" className='btn btn-primary btn-sm'>Editar</a>
+                                            <Link to={"/EditarProfissional/"+Profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
                                                 <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>
