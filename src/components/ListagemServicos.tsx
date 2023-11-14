@@ -12,6 +12,18 @@ const ListagemDeServico = () => {
     const [error, setError] = useState("");
 
 
+    function handleDelete(id: number) {
+        const confirm = window.confirm('Você tem certeza que deseja excluir?');
+        if (confirm)
+            axios.delete('http://127.0.0.1:8000/api/deleteS/' + id)
+        .then(function(response){
+            window.location.href = "/ListagemDeServico"
+        }).catch(function(error){
+            console.log('Ocorreu um erro ao excluir');
+        })
+    }
+
+
         const handleState = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
@@ -114,8 +126,8 @@ const ListagemDeServico = () => {
                                             <td>{servicos.descricao}</td>
                                             <td>{servicos.duracao}</td>     
                                             <td>
-                                            <Link to={"/EditarServicos/"+servicos.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                                <a href="#" className='btn btn-danger btn-sm'>Excluir</a>
+                                            <Link to={"/EditarServicos/" + servicos.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                                <a onClick={e => handleDelete(servicos.id)} className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>
                                     ))}
