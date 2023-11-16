@@ -10,6 +10,8 @@ import ListagemDeServico from "../components/ListagemServicos";
 import EditarCliente from "../components/EditarClientes";
 import EditarProfissional from "../components/EditarProfissionais";
 import EditarServicos from "../components/EditarServicos";
+import RedefinirSenhaProfissionais from "../components/RedefinirSenhaProfissionais";
+import RedefinirSenhaClientes from "../components/RedefinirSenhaClientes";
 
 const AppRoute = () => {
     return (
@@ -24,6 +26,8 @@ const AppRoute = () => {
                 <Route path="/EditarCliente/:id" element={<EditarCliente/>} />
                 <Route path="/EditarProfissional/:id" element={<EditarProfissional/>} />
                 <Route path="/EditarServicos/:id" element={<EditarServicos/>} />
+                <Route path="/redefinirSenhaClientes" element={<RedefinirSenhaClientes/>} />
+                <Route path="/redefinirSenhaProfissionais" element={<RedefinirSenhaProfissionais/>} />
             </Routes>
         </BrowserRouter>
     );

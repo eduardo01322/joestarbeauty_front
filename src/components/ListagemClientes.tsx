@@ -131,6 +131,7 @@ const ListagemDeClientes = () => {
                                             
                                             <td>
                                             <Link to={"/EditarCliente/"+cliente.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                            <Link to={"/RedefinirSenhaClientes/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
                                                 <a onClick={e => handleDelete(cliente.id)} className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>
