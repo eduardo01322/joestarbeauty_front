@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect} from 're
 
 import styles from '../template.module.css';
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './FooterClientes';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 const EditarServicos = () => {
@@ -25,7 +25,7 @@ const EditarServicos = () => {
             duracao: duracao,
         }
         
-        axios.put("http://127.0.0.1:8000/api/updateS",dados,{
+        axios.put("http://127.0.0.1:8000/api/update/servicos",dados,{
             headers:{
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -40,7 +40,7 @@ const EditarServicos = () => {
     useEffect(() => {
       async function fetchData() {
         try{
-            const response = await axios.get("http://127.0.0.1:8000/api/findS/"+parametro.id);
+            const response = await axios.get("http://127.0.0.1:8000/api/find/servicos/"+parametro.id);
             setNome(response.data.data.nome);
             setPreco(response.data.data.preco);
             setDescricao(response.data.data.descricao);

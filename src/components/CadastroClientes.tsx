@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 import axios from 'axios';
 import Header from './Header';
 import style from '../template.module.css'
-import Footer from './Footer';
+import FooterClientes from './FooterClientes';
 
 const Cadastro = () => {
 
@@ -149,6 +149,7 @@ const Cadastro = () => {
                                 <label htmlFor="cep" className='form-label'>Cep</label>
                                     <input type="text" name='cep' className='form-control' required onBlur={Cep} 
                                     onChange={handleState} placeholder='contenha 8 numeros'/>
+                                </div>
                                 <div className='col-4'>
                                 <label htmlFor="cidade" className='form-label'>Cidade</label>
                                     <input type="text" value={cidade} id='localidade' name='localidade' className='form-control' 
@@ -175,7 +176,6 @@ const Cadastro = () => {
                                     <label htmlFor="bairro" className='form-label'>Bairro</label>
                                     <input type="text" name='bairro' className='form-control' required onChange={handleState} />
                                 </div>
-                                </div>
                                 <div className='col-4'>
                                     <label htmlFor="complemento" className='form-label'>Complemento</label>
                                     <input type="text" name='complemento' className='form-control' required onChange={handleState} />
@@ -192,7 +192,7 @@ const Cadastro = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
+            <FooterClientes />
         </div>
     );
 }

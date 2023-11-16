@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 import axios from 'axios';
 import Header from './Header';
 import styles from '../template.module.css'
-import Footer from './Footer'
+import Footerservicos from './FooterServicos';
 
 const CadastroServicos = () => {
     const [nome, setNome] = useState<string>("");
@@ -57,7 +57,7 @@ const CadastroServicos = () => {
                 <div className='container'>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar Serviçoc✩</h5>
+                            <h5 className='card-title'>Cadastrar Serviços✩</h5>
                             <form onSubmit={cadastrarServico} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className="form-label">
@@ -118,6 +118,7 @@ const CadastroServicos = () => {
                     </div>
                 </div>
             </main>
+            <Footerservicos />
         </div>
     );
 };

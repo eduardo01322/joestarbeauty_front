@@ -3,6 +3,8 @@ import axios from 'axios';
 import styles from '../template.module.css'
 import { CadastroServicosInterface } from '../Interfaces/CadastroServicos';
 import { Link } from 'react-router-dom';
+import Header from './Header';
+import Footerservicos from './FooterServicos';
 
 
 const ListagemDeServico = () => {
@@ -15,7 +17,7 @@ const ListagemDeServico = () => {
     function handleDelete(id: number) {
         const confirm = window.confirm('Você tem certeza que deseja excluir?');
         if (confirm)
-            axios.delete('http://127.0.0.1:8000/api/deleteS/' + id)
+            axios.delete('http://127.0.0.1:8000/api/delete/servicos/' + id)
         .then(function(response){
             window.location.href = "/ListagemDeServico"
         }).catch(function(error){
@@ -35,7 +37,7 @@ const ListagemDeServico = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nomeS',
+                const response = await axios.post('http://127.0.0.1:8000/api/nome/servicos',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -60,7 +62,7 @@ const ListagemDeServico = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarS');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizar/servicos');
                 if(true == response.data.status){
                     setServicos(response.data.data)
                 }
@@ -76,6 +78,7 @@ const ListagemDeServico = () => {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -137,7 +140,7 @@ const ListagemDeServico = () => {
                     </div>
                 </div>
             </main>
-
+            <Footerservicos />
         </div>
     );
 }

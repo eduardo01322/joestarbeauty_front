@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect} from 're
 
 import styles from '../template.module.css';
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './FooterClientes';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ const EditarCliente = () => {
             complemento: complemento,
         }
         
-        axios.put("http://127.0.0.1:8000/api/updateC",dados,{
+        axios.put("http://127.0.0.1:8000/api/update/clientes",dados,{
             headers:{
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -59,7 +59,7 @@ const EditarCliente = () => {
     useEffect(() => {
       async function fetchData() {
         try{
-            const response = await axios.get("http://127.0.0.1:8000/api/findC/"+parametro.id);
+            const response = await axios.get("http://127.0.0.1:8000/api/find/clientes/"+parametro.id);
             setNome(response.data.data.nome);
             setCelular(response.data.data.celular);
             setEmail(response.data.data.email);

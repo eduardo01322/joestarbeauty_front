@@ -3,6 +3,8 @@ import axios from 'axios';
 import styles from '../template.module.css';
 import { CadastroProfissionaisInterface } from '../Interfaces/CadastroProfissionalInterface';
 import { Link } from 'react-router-dom';
+import Header from './Header';
+import FooterProfissionais from './FooterProfissionais';
 
 
 const ListagemProfissional = () => {
@@ -15,7 +17,7 @@ const ListagemProfissional = () => {
     function handleDelete(id: number) {
         const confirm = window.confirm('Você tem certeza que deseja excluir?');
         if (confirm)
-            axios.delete('http://127.0.0.1:8000/api/deleteP/' + id)
+            axios.delete('http://127.0.0.1:8000/api/delete/profissional/' + id)
         .then(function(response){
             window.location.href = "/ListagemDeProfissional"
         }).catch(function(error){
@@ -35,7 +37,7 @@ const ListagemProfissional = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nomeP',
+                const response = await axios.post('http://127.0.0.1:8000/api/nome/profissional',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -60,7 +62,7 @@ const ListagemProfissional = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarP');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizar/profissional');
                 if(true === response.data.status){
                     setProfissional(response.data.data)
                 }
@@ -76,6 +78,7 @@ const ListagemProfissional = () => {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -142,7 +145,7 @@ const ListagemProfissional = () => {
                     </div>
                 </div>
             </main>
-
+            <FooterProfissionais />
         </div>
     );
 }

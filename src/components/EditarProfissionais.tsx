@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect} from 're
 
 import styles from '../template.module.css';
 import Header from './Header';
-import Footer from './Footer';
+import Footer from './FooterClientes';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -46,7 +46,7 @@ const EditarProfissional = () => {
             salario: salario,
         }
         
-        axios.put("http://127.0.0.1:8000/api/updateP",dados,{
+        axios.put("http://127.0.0.1:8000/api/update/profissional",dados,{
             headers:{
                 "Accept": "application/json",
                 "Content-Type": "application/json"
@@ -61,7 +61,7 @@ const EditarProfissional = () => {
     useEffect(() => {
       async function fetchData() {
         try{
-            const response = await axios.get("http://127.0.0.1:8000/api/findP/"+parametro.id);
+            const response = await axios.get("http://127.0.0.1:8000/api/find/profissional/"+parametro.id);
             setNome(response.data.data.nome);
             setCelular(response.data.data.celular);
             setEmail(response.data.data.email);

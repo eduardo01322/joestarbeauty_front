@@ -2,7 +2,7 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'r
 import axios from 'axios';
 import Header from './Header';
 import style from '../template.module.css'
-import Footer from './Footer';
+import FooterProfissionais from './FooterProfissionais';
 
 const CadastroProfissionais = () => {
 
@@ -199,7 +199,7 @@ const CadastroProfissionais = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
+            <FooterProfissionais />
         </div>
     );
 }

@@ -3,6 +3,8 @@ import axios from 'axios';
 import styles from '../template.module.css'
 import { CadastroInterface } from '../Interfaces/CadastroClienteInterface';
 import { Link } from 'react-router-dom';
+import Header from './Header';
+import FooterClientes from './FooterClientes';
 
 
 
@@ -16,7 +18,7 @@ const ListagemDeClientes = () => {
     function handleDelete(id: number) {
         const confirm = window.confirm('Você tem certeza que deseja excluir?');
         if (confirm)
-            axios.delete('http://127.0.0.1:8000/api/deleteC/' + id)
+            axios.delete('http://127.0.0.1:8000/api/delete/clientes/' + id)
         .then(function(response){
             window.location.href = "/ListagemDeClientes"
         }).catch(function(error){
@@ -35,7 +37,7 @@ const ListagemDeClientes = () => {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nomeC',
+                const response = await axios.post('http://127.0.0.1:8000/api/nome/clientes',
                     { nome: pesquisa },
                     {
                         headers: {
@@ -60,7 +62,7 @@ const ListagemDeClientes = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizarC');
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizar/clientes');
           
                 if(true === response.data.status){
                     setClientes(response.data.data)
@@ -77,6 +79,7 @@ const ListagemDeClientes = () => {
     
     return (
         <div>
+            <Header />
             <main className={styles.main}>
                 <div className='container'>
 
@@ -138,7 +141,7 @@ const ListagemDeClientes = () => {
                     </div>
                 </div>
             </main>
-
+            <FooterClientes />
         </div>
     );
 }

@@ -2,14 +2,14 @@ import React from "react"
 import styles from "./Footer.module.css"
 
 
-const Footer =()=>{
+const FooterProfissionais =()=>{
     return (
         <footer className={styles.footer}>
             <p>
-                <span>Cadastro de Clientes</span> @SENAI
+                <span>Profissionais</span> @SENAI
             </p>
         </footer>
     );
 }
 
-export default Footer;
+export default FooterProfissionais;
