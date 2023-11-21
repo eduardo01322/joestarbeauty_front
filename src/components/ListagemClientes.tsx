@@ -15,6 +15,7 @@ const ListagemDeClientes = () => {
     const [error, setError] = useState("");
 
 
+    //Delete
     function handleDelete(id: number) {
         const confirm = window.confirm('Você tem certeza que deseja excluir?');
         if (confirm)
@@ -25,13 +26,13 @@ const ListagemDeClientes = () => {
             console.log('Ocorreu um erro ao excluir');
         })
     }
-
         const handleState = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
         }
     }
 
+    //Pesquisar por nome
     const buscar = (e: FormEvent) => {
         e.preventDefault();
 
@@ -59,6 +60,7 @@ const ListagemDeClientes = () => {
         }
         fetchData();
     }
+
     useEffect(() => {
         async function fetchData() {
             try {

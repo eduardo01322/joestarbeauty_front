@@ -1,37 +1,39 @@
-import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import axios from 'axios';
-import styles from '../template.module.css';
-import { CadastroProfissionaisInterface } from '../Interfaces/CadastroProfissionalInterface';
+import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import styles from "../App.module.css";
+import { CadastroInterfaceAgenda } from '../Interfaces/CadastroAgendaInterface';
 import { Link } from 'react-router-dom';
-import Header from './Header';
-import FooterProfissionais from './FooterProfissionais';
 
 
-const ListagemProfissional = () => {
+const ListagemAgenda = () => {
 
-    const [Profissional, setProfissional] = useState<CadastroProfissionaisInterface[]>([]);
+    const [agenda, setAgenda] = useState<CadastroInterfaceAgenda[]>([]);
     const [pesquisa, setPesquisa] = useState<string>('');
     const [error, setError] = useState("");
 
 
-    //Delete
-    function handleDelete(id: number) {
-        const confirm = window.confirm('Você tem certeza que deseja excluir?');
-        if (confirm)
-            axios.delete('http://127.0.0.1:8000/api/delete/profissional/' + id)
-        .then(function(response){
-            window.location.href = "/ListagemDeProfissional"
-        }).catch(function(error){
-            console.log('Ocorreu um erro ao excluir');
-        })
-    }
         const handleState = (e: ChangeEvent<HTMLInputElement>) => {
             if (e.target.name === "pesquisa") {
             setPesquisa(e.target.value);
         }
     }
 
-    //Pesquisar por nome
+    
+//deletando
+function handleDelete(id: number) {
+    const confirm = window.confirm('Você tem certeza que deseja excluir?');
+    if (confirm)
+        axios.delete('http://127.0.0.1:8000/api/delete/agenda/' + id)
+    
+    .then(function(response){
+       
+        window.location.href = " /ListagemAgenda"
+    }).catch(function(error){
+        console.log('Ocorreu um erro ao excluir');
+        console.log(error);
+    })
+}
+
     const buscar = (e: FormEvent) => {
         e.preventDefault();
 
@@ -47,7 +49,9 @@ const ListagemProfissional = () => {
                     }
                 ).then(function (response) {
                     if(true == response.data.status){
-                        setProfissional(response.data.data)
+                        setAgenda(response.data.data)
+                    } else {
+                        setAgenda([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -62,9 +66,9 @@ const ListagemProfissional = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/visualizar/profissional');
-                if(true === response.data.status){
-                    setProfissional(response.data.data)
+                const response = await axios.get('http://127.0.0.1:8000/api/visualizar/agenda');
+                if(true == response.data.status){
+                    setAgenda(response.data.data)
                 }
             } catch (error) {
                 setError("Ocorreu um erro");
@@ -75,29 +79,22 @@ const ListagemProfissional = () => {
         fetchData();
     }, []);
 
-    
     return (
         <div>
-            <Header />
             <main className={styles.main}>
                 <div className='container'>
-
                     <div className='col-md mb-3'>
                         <div className='card'>
                             <div className='card-body'>
-                                <h5 className='card-title'>
-                                    Pesquisar
-                                </h5>
+                                <h5 className='card-title'>Pesquisar</h5>
                                 <form onSubmit={buscar} className='row'>
                                     <div className='col-10'>
                                         <input type="text" name='pesquisa' className='form-control'
                                             onChange={handleState} />
-
                                     </div>
                                     <div className='col-1'>
                                         <button type='submit' className='btn btn-success'>Pesquisar</button>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -108,33 +105,19 @@ const ListagemProfissional = () => {
                             <table className='table table-hover'>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>E-mail</th>
-                                        <th>CPF</th>
-                                        <th>cep</th>
-                                        <th>complemento</th>
-                                        <th>salario</th>
-                                        
-                                        
-                                        
-                                        <th>Ações</th>
+                                        <th>Profissional ID</th>
+                                        <th>Data e hora</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {Profissional.map(Profissional => (
-                                        <tr key={Profissional.id}>
-                                            <td>{Profissional.id}</td>
-                                            <td>{Profissional.nome}</td>
-                                            <td>{Profissional.email}</td>
-                                            <td>{Profissional.cpf}</td>
-                                            <td>{Profissional.cep}</td>
-                                            <td>{Profissional.complemento}</td>
-                                            <td>{Profissional.salario}</td>                                      
+                                    {agenda.map(agenda => (
+                                        <tr key={agenda.id}>
+                                            <td>{agenda.profissional_id}</td>
+                                            <td>{agenda.dataHora}</td>
+                                         
                                             <td>
-                                            <Link to={"/EditarProfissional/" + Profissional.id} className='btn btn-primary btn-sm'>Editar</Link>
-                                            <Link to={"/RedefinirSenhaProfissionais/"} className='btn btn-primary btn-sm'>Redefinir senha</Link>
-                                                <a onClick={e => handleDelete(Profissional.id)} className='btn btn-danger btn-sm'>Excluir</a>
+                                            <Link to={"/EditarProfissional/" + agenda.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                            <a onClick={e => handleDelete(agenda.id)} className='btn btn-danger btn-sm' >Excluir</a>
                                             </td>
                                         </tr>
                                     ))}
@@ -144,8 +127,8 @@ const ListagemProfissional = () => {
                     </div>
                 </div>
             </main>
-            <FooterProfissionais />
+
         </div>
     );
 }
-export default ListagemProfissional;
+export default ListagemAgenda;
