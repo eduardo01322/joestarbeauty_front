@@ -14,6 +14,8 @@ import RedefinirSenhaProfissionais from "../components/RedefinirSenhaProfissiona
 import RedefinirSenhaClientes from "../components/RedefinirSenhaClientes";
 import ListagemAgenda from "../components/ListagemAgenda";
 import CadastroAgenda from "../components/CadastroAgenda";
+import EditarAgenda from "../components/EditarAgenda";
+
 
 const AppRoute = () => {
     return (
@@ -30,6 +32,7 @@ const AppRoute = () => {
                 <Route path="/EditarCliente/:id" element={<EditarCliente/>} />
                 <Route path="/EditarProfissional/:id" element={<EditarProfissional/>} />
                 <Route path="/EditarServicos/:id" element={<EditarServicos/>} />
+                <Route path="/EditarAgenda/:id" element={<EditarAgenda/>} />
                 <Route path="/redefinirSenhaClientes" element={<RedefinirSenhaClientes/>} />
                 <Route path="/redefinirSenhaProfissionais" element={<RedefinirSenhaProfissionais/>} />
             </Routes>

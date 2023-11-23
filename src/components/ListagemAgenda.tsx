@@ -112,6 +112,7 @@ function handleDelete(id: number) {
                             <table className='table table-hover'>
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>ID Profissionais</th>
                                         <th>Data e hora</th>
                                     </tr>

@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './FooterClientes';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
 const EditarServicos = () => {
 
     const [nome, setNome] = useState<string>("");
@@ -67,7 +68,7 @@ const EditarServicos = () => {
                 <div className='container'>
                     <div className='card'>
                         <div className='card-body'>
-                            <h5 className='card-title'>Cadastrar cliente</h5>
+                            <h5 className='card-title'>Atualizar Servicos</h5>
                             <form onSubmit={atualizarServicos} className='row g-3'>
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form label'>nome</label>
