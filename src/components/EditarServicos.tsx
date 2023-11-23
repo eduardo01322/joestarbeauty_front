@@ -64,32 +64,32 @@ const EditarServicos = () => {
 
     return (
         <div><Header />
-            <main className={styles.main}>
-                <div className='container'>
-                    <div className='card'>
-                        <div className='card-body'>
-                            <h5 className='card-title'>Atualizar Servicos</h5>
-                            <form onSubmit={atualizarServicos} className='row g-3'>
-                                <div className='col-6'>
-                                    <label htmlFor="nome" className='form label'>nome</label>
-                                    <input type="text" name='nome' className='form-control' 
-                                    required onChange={handleState} value={nome} />
-                                </div>
-                                <div className="col-6">
-                                    <label htmlFor="preco" className="form-label">Preço</label>
-                                    <input type="decimal" name="preco" className="form-control" 
-                                    required onChange={handleState} value={preco} />
-                                </div>
-                                <div className="col-4">
-                                    <label htmlFor="descricao" className="form-label">Descrição</label>
-                                    <input type="text" name="descricao" className="form-control"
-                                        required onChange={handleState} value={descricao} />
-                                </div>
-                                <div className="col-4">
-                                    <label htmlFor="duracao" className="form-label">Duração</label>
-                                    <input type="text" name="duracao" className="form-control"
-                                        required onChange={handleState} value={duracao} />
-                                </div>
+        <main className={styles.main}>
+            <div className='container'>
+                <div className='card'>
+                    <div className='card-body'>
+                        <h5 className='card-title'>Atualizar Servicos</h5>
+                        <form onSubmit={atualizarServicos} className='row g-3'>
+                        <div className='col-6'>
+                                <label htmlFor="nome" className='form-label'>Nome</label>
+                                <input type="text" name='nome' className='form-control' 
+                                required onChange={handleState} value={nome} />
+                            </div>
+                            <div className='col-6'>
+                                <label htmlFor="preco" className='form-label'>preço</label>
+                                <input type="text" name='preco' className='form-control' 
+                                required onChange={handleState} value={preco} />
+                            </div>
+                            <div className='col-6'>
+                                <label htmlFor="descricao" className='form-label'>Descrição</label>
+                                <input type="text" name='descricao' className='form-control' 
+                                required onChange={handleState} value={descricao} />
+                            </div>
+                            <div className='col-6'>
+                                <label htmlFor="duracao" className='form-label'>duracao</label>
+                                <input type="text" name='duracao' className='form-control' 
+                                required onChange={handleState} value={duracao} />
+                            </div>
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-success btn-sm'>Atualizar</button>
                                 </div>
