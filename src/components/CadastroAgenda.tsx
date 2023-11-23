@@ -1,6 +1,6 @@
 import React, { Component, useState, ChangeEvent, FormEvent, useEffect } from 'react';
 
-import styles from '../App.module.css'
+import style from '../template.module.css'
 import axios from 'axios';
 import Header from './Header';
 import FooterAgenda from './FooterAgenda';
@@ -23,7 +23,7 @@ const CadastroAgenda = () => {
             dataHora: dataHora,
         }
 
-        axios.post('http://127.0.0.1:8000/api/cadastro/agenda',
+        axios.post('http://127.0.0.1:8000/api/agendamento',
             dados,
             {
                 headers: {
@@ -34,7 +34,7 @@ const CadastroAgenda = () => {
         ).then(function (response) {
             alert('cadastro da Agenda realizado com sucesso')
 
-            // window.location.href = "/ListagemAgenda"
+            window.location.href = "/ListagemDeAgenda"
         }).catch(function (error) {
             console.log(error)
         });
@@ -43,7 +43,7 @@ const CadastroAgenda = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/nome/profissional');
+                const response = await axios.post('http://127.0.0.1:8000/api/nome/profissional');
                 if (true == response.data.status) {
                     setProfissional(response.data.data)
                     console.log(profissional);
@@ -68,7 +68,7 @@ const CadastroAgenda = () => {
     return (
         <div>
             <Header />
-            <main className={styles.main}>
+            <main className={style.main}>
                 <div className='container'>
 
                     <div className='card'>

@@ -12,6 +12,8 @@ import EditarProfissional from "../components/EditarProfissionais";
 import EditarServicos from "../components/EditarServicos";
 import RedefinirSenhaProfissionais from "../components/RedefinirSenhaProfissionais";
 import RedefinirSenhaClientes from "../components/RedefinirSenhaClientes";
+import ListagemAgenda from "../components/ListagemAgenda";
+import CadastroAgenda from "../components/CadastroAgenda";
 
 const AppRoute = () => {
     return (
@@ -20,9 +22,11 @@ const AppRoute = () => {
                 <Route path="CadastroDeClientes" element={<CadastroDeClientes />} />
                 <Route path="CadastroDeProfissionais" element={<CadastroProfissionais/>} />
                 <Route path="CadastroDeServicos" element={<CadastroServicos/>} />
+                <Route path="CadastroDeAgenda" element={<CadastroAgenda/>} />
                 <Route path="ListagemDeClientes" element={<ListagemClientes/>} />
                 <Route path="ListagemDeProfissional" element={<ListagemProfissional/>} />
                 <Route path="ListagemDeServico" element={<ListagemDeServico/>} />
+                <Route path="ListagemDeAgenda" element={<ListagemAgenda/>} />
                 <Route path="/EditarCliente/:id" element={<EditarCliente/>} />
                 <Route path="/EditarProfissional/:id" element={<EditarProfissional/>} />
                 <Route path="/EditarServicos/:id" element={<EditarServicos/>} />

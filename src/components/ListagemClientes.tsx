@@ -88,9 +88,7 @@ const ListagemDeClientes = () => {
                     <div className='col-md mb-4'>
                         <div className='card'>
                             <div className='card-body'>
-                                <h5 className='card-title'>
-                                    Pesquisar
-                                </h5>
+                                <h5 className='card-title'>Pesquisar</h5>
                                 <form onSubmit={buscar} className='row'>
                                     <div className='col-10'>
                                         <input type="text" name='pesquisa' className='form-control'
