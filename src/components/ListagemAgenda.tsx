@@ -125,7 +125,7 @@ function handleDelete(id: number) {
                                             <td>{agenda.dataHora}</td>
                                             
                                             <td>
-                                            <Link to={"/EditarAgenda/"+agenda.id} className='btn btn-primary btn-sm'>Editar</Link>
+                                            <Link to={"/EditarAgenda/"+agenda.id} className='btn btn-primary btn-sm m-1'>Editar</Link>
                                                 <a onClick={e => handleDelete(agenda.id)} className='btn btn-danger btn-sm'>Excluir</a>
                                             </td>
                                         </tr>

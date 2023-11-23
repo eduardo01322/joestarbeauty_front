@@ -2,10 +2,8 @@ import React, { Component, useState, ChangeEvent, FormEvent, useEffect} from 're
 
 import styles from '../template.module.css';
 import Header from './Header';
-import Footer from './FooterAgenda';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { CadastroProfissionaisInterface } from '../Interfaces/CadastroProfissionalInterface';
 import FooterAgenda from './FooterAgenda';
 
 const EditarAgenda = () => {
@@ -57,22 +55,22 @@ const EditarAgenda = () => {
 
     return (
         <div><Header />
-            <main className={styles.main}>
-                <div className='container'>
-                    <div className='card'>
-                        <div className='card-body'>
-                            <h5 className='card-title'>Atualizar agenda</h5>
-                            <form onSubmit={atualizarAgenda} className='row g-3'>
-                                <div className='col-6'>
-                                    <label htmlFor="profissional_id" className='form label'>profissional_id</label>
-                                    <input type="text" name='profissional_id' className='form-control' 
-                                    required onChange={handleState} value={profissional_id} />
-                                </div>
-                                <div className="col-6">
-                                    <label htmlFor="dataHora" className="form-label">Data e hora</label>
-                                    <input type="datetime-local" name="dataHora" className="form-control" 
-                                    required onChange={handleState} value={dataHora} />
-                                </div>
+        <main className={styles.main}>
+            <div className='container'>
+                <div className='card'>
+                    <div className='card-body'>
+                        <h5 className='card-title'>Atualizar agenda✩</h5>
+                        <form onSubmit={atualizarAgenda} className='row g-3'>
+                            <div className='col-6'>
+                                <label htmlFor="profissional_id" className='form-label'>profissional_id</label>
+                                <input type="text" name='profissional_id' className='form-control' 
+                                required onChange={handleState} value={profissional_id} />
+                            </div>
+                            <div className='col-6'>
+                                <label htmlFor="dataHora" className='form-label'>Celular</label>
+                                <input type="datetime-local" name='dataHora' className='form-control' 
+                                required onChange={handleState} value={dataHora} />
+                            </div>
                                 <div className='col-12'>
                                     <button type='submit' className='btn btn-success btn-sm'>Atualizar</button>
                                 </div>
