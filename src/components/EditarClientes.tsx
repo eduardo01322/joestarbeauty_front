@@ -23,6 +23,23 @@ const EditarCliente = () => {
     const [complemento, setComplemento] = useState<string>("");
     const [id, setId] = useState<number>();
 
+    const Cep = (e: FormEvent) => {
+
+        e.preventDefault();
+
+        fetch('https://viacep.com.br/ws/' + cep + '/json/',
+            {
+                method: 'GET'
+            }
+        ).then(response => response.json())
+            .then(
+                data => {
+                    console.log(data);
+                    setCidade(data.localidade);
+                    setEstado(data.uf);
+                })
+    }
+
     const parametro = useParams();
     const atualizarClientes = (e: FormEvent) => {
         e.preventDefault();
@@ -147,13 +164,13 @@ const EditarCliente = () => {
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="cidade" className='form-label'>Cidade</label>
-                                <input type="text" name='cidade' className='form-control' 
-                                required onChange={handleState} value={cidade} />
+                                <input type="text" value={cidade} id='localidade' name='localidade' className='form-control' 
+                                required onChange={handleState} />
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="estado" className='form-label'>Estado</label>
-                                <input type="text" name='estado' className='form-control' 
-                                required onChange={handleState} value={estado} />
+                                <input type="text" value={estado} name='estado' className='form-control' 
+                                required onChange={handleState} />
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="pais" className='form-label'>País</label>
@@ -178,7 +195,7 @@ const EditarCliente = () => {
                             <div className='col-6'>
                                 <label htmlFor="cep" className='form-label'>CEP</label>
                                 <input type="text" name='cep' className='form-control' 
-                                required onChange={handleState} value={cep} />
+                                required onBlur={Cep} onChange={handleState} value={cep} />
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="complemento" className='form-label'>Complemento</label>
