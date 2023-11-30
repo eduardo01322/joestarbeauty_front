@@ -20,7 +20,11 @@ const ListagemProfissional = () => {
         if (confirm)
             axios.delete('http://127.0.0.1:8000/api/delete/profissional/' + id)
         .then(function(response){
+            if (response.data.status === false){
+                alert ('Este profissional ainda têm agendamentos')
+            } else {
             window.location.href = "/ListagemDeProfissional"
+            }
         }).catch(function(error){
             console.log('Ocorreu um erro ao excluir');
         })
