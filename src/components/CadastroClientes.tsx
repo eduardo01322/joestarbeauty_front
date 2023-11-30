@@ -50,8 +50,16 @@ const Cadastro = () => {
                 data => {
                     console.log(data);
                     setCidade(data.localidade);
+                    setCep(data.cep);
                     setEstado(data.uf);
-                })
+                }
+                ).catch(error => {setErro("Pesquisa invalida")});
+    }
+
+    const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.name === "cep"){
+            setCep(e.target.value);
+        }
     }
 
     const cadastrarUsuario = (e: FormEvent) => {
@@ -226,7 +234,7 @@ const Cadastro = () => {
                                 <div className='col-4'>
                                 <label htmlFor="cep" className='form-label'>Cep</label>
                                     <input type="text" name='cep' className='form-control' required onBlur={Cep} 
-                                    onChange={handleState} placeholder='contenha 8 numeros'/> 
+                                    onChange={submitForm} placeholder='contenha 8 numeros'/> 
                                     <div className='text-danger'>{cepErro}</div>
                                 </div>
                                 <div className='col-4'>

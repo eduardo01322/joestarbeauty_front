@@ -25,7 +25,7 @@ const CadastroProfissionais = () => {
     const [celularErro, setCelularErro] = useState<string>("");
     const [emailErro, setEmailErro] = useState<string>("");
     const [cpfErro, setCpfErro] = useState<string>("");
-    const [dataNascimentoErro, setDataNascimentoErro] = useState<string>("")
+    const [dataDeNascimentoErro, setDataDeNascimentoErro] = useState<string>("")
     const [cidadeErro, setCidadeErro] = useState<string>("");
     const [estadoErro, setEstadoErro] = useState<string>("");
     const [paisErro, setPaisErro] = useState<string>("");
@@ -36,7 +36,6 @@ const CadastroProfissionais = () => {
     const [complementoErro, setComplementoErro] = useState<string>("");
     const [senhaErro, setSenhaErro] = useState<string>("");
     const [salarioErro, setSalarioErro]= useState<string>("");
-
     const[erro, setErro]=useState<string>("")
 
 
@@ -53,8 +52,15 @@ const CadastroProfissionais = () => {
                 data => {
                     console.log(data);
                     setCidade(data.localidade);
+                    setCep(data.cep);
                     setEstado(data.uf);
-                })
+                }
+                ).catch(error => {setErro("Pesquisa invalida")});
+    }
+    const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.name === "cep"){
+            setCep(e.target.value);
+        }
     }
 
     const cadastrarProfissionais = (e: FormEvent) => {
@@ -62,7 +68,7 @@ const CadastroProfissionais = () => {
         setCelularErro("")
         setEmailErro("")
         setCpfErro("")
-        setDataNascimentoErro("")
+        setDataDeNascimentoErro("")
         setCidadeErro("")
         setEstadoErro("")
         setPaisErro("")
@@ -112,7 +118,7 @@ const CadastroProfissionais = () => {
                     setCpfErro(response.data.error.cpf[0])
                 }
                 if('dataDeNascimento' in response.data.error){
-                    setDataNascimentoErro(response.data.error.dataDeNascimento[0])
+                    setDataDeNascimentoErro(response.data.error.dataDeNascimento[0])
                 }
                 if('cidade' in response.data.error){
                     setCidadeErro(response.data.error.cidade[0])
@@ -222,7 +228,8 @@ const CadastroProfissionais = () => {
                                 <div className='col-4'>
                                     <label htmlFor="celular" className='form-label'>Celular</label>
                                     <input type="text" name='celular' className='form-control' required onChange={handleState} />
-                                    <div className='text-danger'>{celularErro}</div></div>
+                                    <div className='text-danger'>{celularErro}</div>
+                                    </div>
                                 <div className='col-4'>
                                     <label htmlFor="cpf" className='form-label'>CPF</label>
                                     <input type="text" name='cpf' className='form-control' required onChange={handleState} />
@@ -231,11 +238,11 @@ const CadastroProfissionais = () => {
                                 <div className='col-4'>
                                     <label htmlFor="dataDeNascimento" className='form-label'>Data de nascimento</label>
                                     <input type="date" name='dataDeNascimento' className='form-control' required onChange={handleState} />
-                                    <div className='text-danger'>{dataNascimentoErro}</div>
+                                    <div className='text-danger'>{dataDeNascimentoErro}</div>
                                     </div>
                                 <div className='col-4'>
                                     <label htmlFor="cep" className='form-label'>CEP</label>
-                                    <input type="text" name='cep' className='form-control' required onBlur={Cep} onChange={handleState} />
+                                    <input type="text" name='cep' className='form-control' required onBlur={Cep} onChange={submitForm} />
                                     <div className='text-danger'>{cepErro}</div>
                                     </div>
                                 <div className='col-4'>
