@@ -8,7 +8,7 @@ const Header = () => {
 
             <nav className="navbar navbar-expand-lg navbar-dark navbar-center">
                 <div className="container-fluid">
-                    <a href="#" className="navbar-brand">✩Joestars Beauty✩</a>
+                    <img src="joestarsLogo.png" width="200" height="60" />
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#conteudoNavbar"
                         aria-controls="conteudoNavbar" aria-expanded="false" aria-label="Toggle Navigation">
@@ -19,7 +19,7 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="conteudoNavbar">
                             <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a href="../paginaInicial/JoestarPaginaInicial/index.html" className="nav-link active">Início</a>
+                                    <a href="" className="nav-link active">Início</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="/CadastroDeClientes" className="nav-link active">Cadastrar Clientes✩</a>
