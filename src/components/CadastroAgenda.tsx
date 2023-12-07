@@ -29,10 +29,11 @@ const CadastroAgenda = () => {
             profissional_id: profissional_id,
             dataHora: dataHora,
         }
-
-        axios.post('http://127.0.0.1:8000/api/agendamento',
-            dados,
-            {
+        if (new Date(dataHora) < new Date()) {
+            setDataHoraErro("Não é possível cadastrar antes da data e hora atual");
+          }
+          
+        axios.post('http://127.0.0.1:8000/api/agendamento', dados, {
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
@@ -45,9 +46,6 @@ const CadastroAgenda = () => {
                 }
                 if('dataHora' in response.data.error){
                     setDataHoraErro(response.data.error.dataHora[0])
-                }
-                if('profissional_id' in response.data.error){
-                    setProfissionalErro(response.data.error.profissional_id[0])
                 }
             } else {
             window.location.href = "/ListagemDeAgenda"
@@ -95,7 +93,7 @@ const CadastroAgenda = () => {
                                 <div className='col-6'>
                                     <label htmlFor="nome" className='form-label'>Profissional_Id</label>
                                     <select name='profissional_id' id='profissional_id ' className='form-control' required onChange={handleProfissionalSelect} >
-                                        <option value="0">Selecione um Profissional</option>
+                                        <option value="">Selecione um Profissional</option>
                                         {profissional.map(profissional => (
                                             <option key={profissional.id} value={profissional.id}>
                                                 {profissional.nome}

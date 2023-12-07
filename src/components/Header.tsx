@@ -19,7 +19,7 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="conteudoNavbar">
                             <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <a href="#" className="nav-link active">Início</a>
+                                    <a href="../paginaInicial/JoestarPaginaInicial/index.html" className="nav-link active">Início</a>
                                 </li>
                                 <li className="nav-item">
                                     <a href="/CadastroDeClientes" className="nav-link active">Cadastrar Clientes✩</a>
@@ -31,23 +31,28 @@ const Header = () => {
                                     <a href="/CadastroDeServicos" className="nav-link active">Cadastrar serviços✩</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a href="/CadastroDeAgenda" className="nav-link active">Agendamento✩</a>
+                                    <a href="/CadastroDeAgenda" className="nav-link active">Cadastrar Horario disponiveis✩</a>
                                 </li>
+                                <li className="nav-item">
+                                    <a href="/ListagemDeClientes" className="nav-link active">Listagem de clientes cadastrados✩</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="/ListagemDeProfissional" className="nav-link active">Listagem de Profissionais cadastrados✩</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="/ListagemDeServico" className="nav-link active">Listagem serviços✩</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="/ListagemDeAgenda" className="nav-link active">Listagem de horario disponiveis✩</a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
                 </div>
             </nav>
-
-
             <div className="container col-md-12 ml-sm-auto mt-3 col-lg-12 px-4">
-
-
-
             </div>
-
-
-
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" >
             </script>

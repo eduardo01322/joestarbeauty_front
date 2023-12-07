@@ -53,8 +53,9 @@ const EditarProfissional = () => {
                 data => {
                     console.log(data);
                     setCidade(data.localidade);
-                    setCep(data.cep);
                     setEstado(data.uf);
+                    setBairro(data.bairro);
+                    setRua(data.logradouro)
                 }
                 ).catch(error => {setErro("Pesquisa invalida")});
     }
@@ -280,8 +281,8 @@ const EditarProfissional = () => {
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="rua" className='form-label'>Rua</label>
-                                <input type="text" name='rua' className='form-control' 
-                                required onChange={handleState} value={rua} />
+                                <input type="text" value={rua} id='logradouro' name='logradouro' className='form-control' 
+                                required onChange={handleState}/>
                                 <div className='text-danger'>{ruaErro}</div>
                             </div>
                             <div className='col-6'>
@@ -292,8 +293,8 @@ const EditarProfissional = () => {
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="bairro" className='form-label'>Bairro</label>
-                                <input type="text" name='bairro' className='form-control' 
-                                required onChange={handleState} value={bairro} />
+                                <input type="text" value={bairro} id='bairro' name='bairro' className='form-control' 
+                                required onChange={handleState}/>
                                 <div className='text-danger'>{bairroErro}</div>
                             </div>
                             <div className='col-6'>

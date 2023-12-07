@@ -41,8 +41,8 @@ function handleDelete(id: number) {
 
         async function fetchData() {
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/nome/profissional',
-                    { nome: pesquisa },
+                const response = await axios.post('http://127.0.0.1:8000/api/Profissional/agendamento',
+                    { profissional_id: pesquisa },
                     {
                         headers: {
                             "Accept": "application/json",
@@ -52,8 +52,6 @@ function handleDelete(id: number) {
                 ).then(function (response) {
                     if(true == response.data.status){
                         setAgenda(response.data.data)
-                    } else {
-                        setAgenda([]);
                     }
                 }).catch(function (error) {
                     console.log(error)
@@ -69,6 +67,7 @@ function handleDelete(id: number) {
         async function fetchData() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/visualizar/agendamento');
+                
                 if(true == response.data.status){
                     setAgenda(response.data.data)
                 }

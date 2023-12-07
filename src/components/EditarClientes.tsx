@@ -35,6 +35,7 @@ const EditarCliente = () => {
     const [cepErro, setCepErro] = useState<string>("");
     const [complementoErro, setComplementoErro] = useState<string>("");
     const [senhaErro, setSenhaErro] = useState<string>("");
+    const[erro, setErro]=useState<string>("")
     const [id, setId] = useState<number>();
 
     const Cep = (e: FormEvent) => {
@@ -51,7 +52,16 @@ const EditarCliente = () => {
                     console.log(data);
                     setCidade(data.localidade);
                     setEstado(data.uf);
-                })
+                    setBairro(data.bairro);
+                    setRua(data.logradouro)
+                }
+                ).catch(error => {setErro("Pesquisa invalida")});
+    }
+
+    const submitForm = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.name === "cep"){
+            setCep(e.target.value);
+        }
     }
 
     const parametro = useParams();
@@ -261,8 +271,8 @@ const EditarCliente = () => {
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="rua" className='form-label'>Rua</label>
-                                <input type="text" name='rua' className='form-control' 
-                                required onChange={handleState} value={rua} />
+                                <input type="text" value={rua} id='logradouro' name='logradouro' className='form-control' 
+                                required onChange={handleState}/>
                                 <div className='text-danger'>{ruaErro}</div>
                             </div>
                             <div className='col-6'>
@@ -273,8 +283,8 @@ const EditarCliente = () => {
                             </div>
                             <div className='col-6'>
                                 <label htmlFor="bairro" className='form-label'>Bairro</label>
-                                <input type="text" name='bairro' className='form-control' 
-                                required onChange={handleState} value={bairro} />
+                                <input type="text" value={bairro} id='bairro' name='bairro' className='form-control' 
+                                required onChange={handleState} />
                                 <div className='text-danger'>{bairroErro}</div>
                             </div>
                             <div className='col-6'>
